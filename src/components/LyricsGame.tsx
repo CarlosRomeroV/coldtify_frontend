@@ -13,13 +13,14 @@ function LyricsGame({ accessToken }: Props) {
   const [correctInputs, setCorrectInputs] = useState<{ [index: number]: boolean }>({});
   const [result, setResult] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
+  const backendUrl = import.meta.env.VITE_BACKEND_URL;
 
   const fetchVerse = async () => {
     setLoading(true);
     setResult(null);
     setCorrectInputs({});
     try {
-      const trackRes = await axios.get("http://127.0.0.1:8888/spotify/random-track", {
+      const trackRes = await axios.get(`${backendUrl}/spotify/random-track`, {
         headers: {
           Authorization: `Bearer ${accessToken}`,
         },
@@ -27,7 +28,7 @@ function LyricsGame({ accessToken }: Props) {
 
       const geniusUrl = trackRes.data.geniusUrl;
 
-      const verseRes = await axios.get("http://127.0.0.1:8888/genius/first-verse", {
+      const verseRes = await axios.get(`${backendUrl}/genius/first-verse`, {
         params: { url: geniusUrl },
       });
 

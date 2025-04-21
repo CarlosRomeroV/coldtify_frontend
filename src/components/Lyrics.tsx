@@ -17,13 +17,14 @@ function LyricsPreview({ accessToken }: Props) {
   const [track, setTrack] = useState<Track | null>(null);
   const [verse, setVerse] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
+  const backendUrl = import.meta.env.VITE_BACKEND_URL;
 
   const fetchTrackWithLyrics = async () => {
     setLoading(true);
     setVerse(null); // resetear anterior
     try {
       // 1. Obtener canción aleatoria
-      const trackRes = await axios.get("http://127.0.0.1:8888/spotify/random-track", {
+      const trackRes = await axios.get(`${backendUrl}/spotify/random-track`, {
         headers: {
           Authorization: `Bearer ${accessToken}`,
         },
@@ -33,7 +34,7 @@ function LyricsPreview({ accessToken }: Props) {
       setTrack(data);
 
       // 2. Obtener primer verso desde geniusUrl
-      const verseRes = await axios.get("http://127.0.0.1:8888/genius/first-verse", {
+      const verseRes = await axios.get(`${backendUrl}/genius/first-verse`, {
         params: { url: data.geniusUrl },
       });
 

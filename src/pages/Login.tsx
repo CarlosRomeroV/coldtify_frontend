@@ -4,6 +4,7 @@ import { storeTokens } from "../utils/auth";
 
 function Login() {
   const navigate = useNavigate();
+  const backendUrl = import.meta.env.VITE_BACKEND_URL;
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
@@ -17,7 +18,7 @@ function Login() {
   }, [navigate]);
 
   const handleLogin = () => {
-    window.location.href = "http://localhost:8888/login";
+    window.location.href = `${backendUrl}/login`;
   };
 
   return (

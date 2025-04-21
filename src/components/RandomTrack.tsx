@@ -16,11 +16,12 @@ interface Track {
 function RandomTrack({ accessToken }: Props) {
   const [track, setTrack] = useState<Track | null>(null);
   const [loading, setLoading] = useState(false);
+  const backendUrl = import.meta.env.VITE_BACKEND_URL;
 
   const fetchTrack = async () => {
     setLoading(true);
     try {
-      const res = await axios.get("http://127.0.0.1:8888/spotify/random-track", {
+      const res = await axios.get(`${backendUrl}/spotify/random-track`, {
         headers: {
           Authorization: `Bearer ${accessToken}`,
         },

@@ -1,4 +1,4 @@
-import React, { JSX } from "react";
+import { JSX } from "react";
 import "../styles/nameEffects.css";
 
 export function applyNameEffect(name: string, effect: number): JSX.Element {

@@ -15,6 +15,7 @@ interface Track {
 const TOTAL_ROUNDS = 10;
 
 function Game() {
+  const backendUrl = import.meta.env.VITE_BACKEND_URL;
   const [track, setTrack] = useState<Track | null>(null);
   const [verse, setVerse] = useState<string | null>(null);
   const [verseWords, setVerseWords] = useState<string[]>([]);
@@ -74,7 +75,7 @@ function Game() {
       }
       
 
-      const trackRes = await axios.get("http://127.0.0.1:8888/spotify/random-track", {
+      const trackRes = await axios.get(`${backendUrl}/spotify/random-track`, {
         headers: {
           Authorization: `Bearer ${accessToken}`,
         },
@@ -83,7 +84,7 @@ function Game() {
       const trackData: Track = trackRes.data;
       setTrack(trackData);
 
-      const verseRes = await axios.get("http://127.0.0.1:8888/genius/random-verse", {
+      const verseRes = await axios.get(`${backendUrl}/genius/random-verse`, {
         params: { url: trackData.geniusUrl },
       });
 
@@ -203,7 +204,7 @@ function Game() {
         // ✅ Actualiza puntuación en Supabase si es mayor
         if (spotifyId) {
           try {
-            await fetch("http://127.0.0.1:8888/user/update-score", {
+            await fetch(`${backendUrl}/user/update-score`, {
               method: "POST",
               headers: { "Content-Type": "application/json" },
               body: JSON.stringify({
