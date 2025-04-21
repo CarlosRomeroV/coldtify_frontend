@@ -1,0 +1,265 @@
+/* 🌈 Rainbow slow */
+.rainbow-text-slow span {
+    display: inline-block;
+    animation: rainbowShift 4s linear infinite;
+  }
+  
+  @keyframes rainbowShift {
+    0% { color: red; }
+    16% { color: orange; }
+    32% { color: yellow; }
+    48% { color: green; }
+    64% { color: blue; }
+    80% { color: indigo; }
+    100% { color: violet; }
+  }
+  
+
+  
+  /* 🔀 Floating effect */
+  .float-effect span {
+    display: inline-block;
+    animation: float 2s ease-in-out infinite;
+  }
+  
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-6px); }
+  }
+  
+  /* 🔥 Fire (más llamativo) */
+  .fire-text {
+    color: #ff5722;
+    text-shadow:
+      0 0 5px #ffd700,
+      0 0 10px #ff4500,
+      0 0 20px #ff0000,
+      0 0 30px #ff6347;
+    animation: flamePulse 0.8s infinite ease-in-out alternate;
+  }
+  
+  @keyframes flamePulse {
+    0% {
+      text-shadow:
+        0 0 5px #ffd700,
+        0 0 10px #ff4500,
+        0 0 15px #ff0000,
+        0 0 20px #ff6347;
+      transform: scale(1);
+    }
+    100% {
+      text-shadow:
+        0 0 10px #ffff00,
+        0 0 20px #ff3300,
+        0 0 30px #ff0000,
+        0 0 40px #ff4500;
+      transform: scale(1.05);
+    }
+  }
+  
+/* ❄️ Ice (más llamativo) */
+.ice-text {
+    color: #b3f0ff;
+    text-shadow:
+      0 0 4px #a0f8ff,
+      0 0 8px #00eaff,
+      0 0 12px #00d4ff,
+      0 0 18px #00bfff;
+    animation: frostGlow 1.5s infinite alternate;
+  }
+  
+  @keyframes frostGlow {
+    0% {
+      text-shadow:
+        0 0 4px #a0f8ff,
+        0 0 8px #00eaff,
+        0 0 12px #00d4ff,
+        0 0 18px #00bfff;
+    }
+    100% {
+      text-shadow:
+        0 0 6px #ccf6ff,
+        0 0 12px #66f0ff,
+        0 0 18px #33e0ff,
+        0 0 24px #00ccff;
+    }
+  }
+  
+  
+  /* 🍮 Gelatin */
+  .gelatin-text span {
+    display: inline-block;
+    animation: jelly 1.8s infinite;
+  }
+  
+  @keyframes jelly {
+    0%   { transform: scale(1, 1); }
+    25%  { transform: scale(1.1, 0.9); }
+    50%  { transform: scale(0.9, 1.1); }
+    75%  { transform: scale(1.05, 0.95); }
+    100% { transform: scale(1, 1); }
+  }
+  
+  /* 🌊 Wave */
+  .wave-text span {
+    display: inline-block;
+    animation: wave 2s ease-in-out infinite;
+  }
+  
+  @keyframes wave {
+    0%   { transform: translateY(0); }
+    25%  { transform: translateY(-6px); }
+    50%  { transform: translateY(0); }
+    75%  { transform: translateY(6px); }
+    100% { transform: translateY(0); }
+  }
+  
+  /* 💨 Windy */
+  .windy-text span {
+    display: inline-block;
+    animation: wind-blow 1.5s ease-in-out infinite;
+  }
+  
+  @keyframes wind-blow {
+    0%   { transform: translateX(0); opacity: 1; }
+    25%  { transform: translateX(-1px); opacity: 0.9; }
+    50%  { transform: translateX(1px); opacity: 0.85; }
+    75%  { transform: translateX(-2px); opacity: 0.9; }
+    100% { transform: translateX(0); opacity: 1; }
+  }
+  
+  /* ⚡ Glitch */
+  .glitch-text {
+    position: relative;
+    color: white;
+  }
+  
+  .glitch-text::before,
+  .glitch-text::after {
+    content: attr(data-text);
+    position: absolute;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    z-index: -1;
+  }
+  
+  .glitch-text::before {
+    color: #f0f;
+    top: -2px;
+    animation: glitchTop 0.8s infinite linear;
+  }
+  
+  .glitch-text::after {
+    color: #0ff;
+    top: 2px;
+    animation: glitchBottom 0.8s infinite linear;
+  }
+  
+  @keyframes glitchTop {
+    0% { clip-path: inset(0 0 80% 0); transform: translate(-2px, -1px); }
+    50% { clip-path: inset(20% 0 60% 0); transform: translate(2px, 0); }
+    100% { clip-path: inset(0 0 80% 0); transform: translate(-1px, 1px); }
+  }
+  
+  @keyframes glitchBottom {
+    0% { clip-path: inset(60% 0 20% 0); transform: translate(2px, 0); }
+    50% { clip-path: inset(80% 0 0 0); transform: translate(-1px, -1px); }
+    100% { clip-path: inset(60% 0 20% 0); transform: translate(1px, 1px); }
+  }
+  
+  /* 📺 Warp */
+  .warp-text {
+    display: inline-block;
+    animation: warp 2s infinite ease-in-out;
+  }
+  
+  @keyframes warp {
+    0%   { transform: scale(1, 1); }
+    25%  { transform: scale(1.2, 0.8); }
+    50%  { transform: scale(0.8, 1.2); }
+    75%  { transform: scale(1.1, 0.9); }
+    100% { transform: scale(1, 1); }
+  }
+  
+  /* 💥 Explosión de color al pasar el cursor */
+  .color-explosion {
+    transition: color 0.4s ease-in-out;
+    color: white;
+  }
+  .color-explosion:hover {
+    color: #ff00cc;
+    text-shadow: 0 0 10px #ff00cc, 0 0 20px #ff6600;
+  }
+  
+  /* 💡 Neón */
+  .neon-text {
+    color: rgb(228, 33, 253);
+    text-shadow: 0 0 5px rgb(143, 8, 87), 0 0 10px #0ff, 0 0 20px #0ff;
+    animation: neonPulse 1.5s infinite alternate;
+  }
+  @keyframes neonPulse {
+    from { text-shadow: 0 0 5px #0ff; }
+    to   { text-shadow: 0 0 20px #0ff; }
+  }
+  
+  /* 🪞 Reflejo vertical */
+  .mirror-text {
+    position: relative;
+    display: inline-block;
+    color: white;
+  }
+  .mirror-text::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 100%;
+    left: 0;
+    transform: scaleY(-1);
+    color: white;
+    opacity: 0.3;
+    filter: blur(1px);
+  }
+    
+    /* 🪙 Silver shimmering con brillo */
+    .silver-effect span {
+        display: inline-block;
+        background: linear-gradient(90deg, #e0e0e0, #bcbcbc, #f0f0f0, #c0c0c0);
+        background-size: 400%;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        text-shadow: 0 0 8px rgba(255, 255, 255, 0.6), 0 0 12px rgba(200, 200, 200, 0.4);
+        animation: silver-shine 3s linear infinite;
+    }
+    
+    @keyframes silver-shine {
+        0% {
+        background-position: 0% 50%;
+        }
+        100% {
+        background-position: 100% 50%;
+        }
+    }
+  
+
+    /* ✨ Gold (tipo silver pero en dorado) */
+    .gold-effect span {
+        display: inline-block;
+        background: linear-gradient(90deg, #ffd700, #ffcc33, #ffae00, #ffd700);
+        background-size: 400%;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        text-shadow: 0 0 8px rgba(255, 215, 0, 0.6), 0 0 12px rgba(255, 185, 0, 0.4);
+        animation: gold-shimmer 2s linear infinite;
+    }
+    
+    @keyframes gold-shimmer {
+        0% {
+        background-position: 0% 50%;
+        }
+        100% {
+        background-position: 100% 50%;
+        }
+    }
+  
+  
+  
