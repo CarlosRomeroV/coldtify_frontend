@@ -5,6 +5,7 @@ import Login from "./pages/Login";
 import Navbar from "./components/Navbar";
 import Ranking from "./pages/Ranking";
 import User from "./pages/User";
+import Callback from "./components/Callback";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
       <Route path="/login" element={<Login />} />
       <Route path="/ranking" element={<Ranking />} />
       <Route path="/profile" element={<User />} />
+      <Route path="/callback" element={<Callback />} />
     </Routes>
     </>
   );
