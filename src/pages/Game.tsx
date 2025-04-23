@@ -124,57 +124,6 @@ function Game() {
     }
   }, [round, accessToken]);
 
-  useEffect(() => {
-    const fetchToken = async () => {
-      const urlParams = new URLSearchParams(window.location.search);
-      const accessFromUrl = urlParams.get("access_token");
-      const refreshFromUrl = urlParams.get("refresh_token");
-      const nameFromUrl = urlParams.get("display_name");
-      if (nameFromUrl) localStorage.setItem("display_name", nameFromUrl);
-  
-      if (accessFromUrl && refreshFromUrl) {
-        console.log("💾 Guardando tokens desde la URL");
-        storeTokens(accessFromUrl, refreshFromUrl);
-        setAccessToken(accessFromUrl);
-  
-        // Limpia la URL para que no se vean los tokens
-        window.history.replaceState({}, document.title, "/game");
-      } else {
-        const token = await getAccessToken();
-        if (token) {
-          setAccessToken(token);
-        } else {
-          console.warn("Token no disponible");
-        }
-      }
-    };
-  
-    fetchToken();
-  }, []);
-  
-  useEffect(() => {
-    const fetchSpotifyId = async () => {
-      if (!accessToken) return;
-  
-      try {
-        const res = await fetch("https://api.spotify.com/v1/me", {
-          headers: {
-            Authorization: `Bearer ${accessToken}`,
-          },
-        });
-        const data = await res.json();
-        setSpotifyId(data.id);
-      } catch (error) {
-        console.error("Error obteniendo spotify_id:", error);
-      }
-    };
-  
-    fetchSpotifyId();
-  }, [accessToken]);
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>, index: number) => {
-    setInputs({ ...inputs, [index]: e.target.value });
-  };
 
   const handleVerify = () => {
     const newCorrectInputs: { [index: number]: boolean } = {};
