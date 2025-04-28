@@ -6,6 +6,9 @@ function Callback() {
   const navigate = useNavigate();
 
   useEffect(() => {
+    console.log("Callback component mounted");
+    console.log("URL actual:", window.location.href);
+
     const params = new URLSearchParams(window.location.search);
     const access = params.get("access_token");
     const refresh = params.get("refresh_token");

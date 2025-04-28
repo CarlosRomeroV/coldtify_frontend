@@ -1,11 +1,11 @@
 import { Routes, Route } from "react-router-dom";
 import Menu from "./pages/Menu";
-import Game from "./pages/Game";
 import Login from "./pages/Login";
 import Navbar from "./components/Navbar";
 import Ranking from "./pages/Ranking";
 import User from "./pages/User";
 import Callback from "./components/Callback";
+import AlbumGuessGame from "./components/AlbumGuessGame";
 
 function App() {
   return (
@@ -13,7 +13,7 @@ function App() {
     <Navbar/>
     <Routes>
       <Route path="/" element={<Menu />} />
-      <Route path="/game" element={<Game />} />
+      <Route path="/game" element={<AlbumGuessGame />} />
       <Route path="/login" element={<Login />} />
       <Route path="/ranking" element={<Ranking />} />
       <Route path="/profile" element={<User />} />

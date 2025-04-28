@@ -18,7 +18,7 @@ export const storeTokens = (accessToken: string, refreshToken: string) => {
   
     if (refreshToken) {
       try {
-        const res = await fetch(`http://127.0.0.1:8888/refresh_token?refresh_token=${refreshToken}`);
+        const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/refresh_token?refresh_token=${refreshToken}`);
         const data = await res.json();
         if (data.access_token) {
           storeTokens(data.access_token, refreshToken);
